@@ -32,7 +32,7 @@ public class PipeObstacle : MonoBehaviour
     public void FadeOut()
     {
         Tween.StopAll(transform);
-        Tween.PositionY(transform, -12, 1f);
-        Tween.PositionY(toppipe.transform, 24, 1.2f).OnComplete(() => Destroy(this.gameObject));
+        Tween.PositionY(transform, -12, 2f);
+        Tween.PositionY(toppipe.transform, 24, 2.2f).OnComplete(() => Destroy(this.gameObject));
     }
 }

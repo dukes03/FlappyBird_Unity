@@ -22,11 +22,13 @@ public class GameManager : Singleton<GameManager>
     }
     public void LogoIn()
     {
+        Logo.SetActive(true);
         Logo.transform.position = new Vector2(-4.68f, -3.59f);
         Tween.Position(Logo.transform, new Vector2(0.68f, 2.3f), 1);
     }
     public void LogoOut()
     {
+        Logo.SetActive(false);
         Tween.Position(Logo.transform, new Vector2(4.19f, 6.17f), 0.5f);
     }
     public void StartGame()
