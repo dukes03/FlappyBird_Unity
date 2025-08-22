@@ -8,19 +8,21 @@ public class LayerParallux : MonoBehaviour
     public Vector2 startPos;
     public float endPos = -14;
     public float speed = 2;
-        private List<Tween> tween = new List<Tween>();
+    private List<Tween> tween = new List<Tween>();
     void Start()
     {
         for (int i = 0; i < listParallux.Count; i++)
         {
-            tween.Add(new Tween());
-            StartMove(i);
+            initStartMove(i);
         }
-        
+
     }
 
-
-
+    private void initStartMove(int index)
+    {
+        tween.Add(Tween.PositionX(listParallux[index].transform, endValue: endPos, duration: Getduration(index), Ease.Linear));
+        tween[index].OnComplete(() => ResetParallux(index));
+    }
     private void StartMove(int index)
     {
         tween[index] = Tween.PositionX(listParallux[index].transform, endValue: endPos, duration: Getduration(index), Ease.Linear);
