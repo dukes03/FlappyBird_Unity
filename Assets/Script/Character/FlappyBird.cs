@@ -34,6 +34,7 @@ public class FlappyBird : MonoBehaviour
     {
         if (isAlive)
         {
+            SoundManager.instance.PlaySound("jump", 0);
             rigidbody2D.linearVelocityY = velocityFly;
             tweenRotation(15, timeFallState).OnComplete(Fall);
         }
@@ -62,9 +63,11 @@ public class FlappyBird : MonoBehaviour
         Physics2D.gravity = Vector2.zero;
         rigidbody2D.linearVelocityY = 0;
         isAlive = false;
+        SoundManager.instance.PlaySound("hurt", 0);
         Tween.Delay(duration: 0.5f, () =>
        {
-           Tween.PositionY(transform, endValue: transform.position.y + 2, duration: 1, ease: Ease.InOutSine).OnComplete(() => Tween.PositionY(transform, endValue: -6, duration: 2, ease: Ease.InOutSine));
+           SoundManager.instance.PlaySound("laser", 0);
+           Tween.PositionY(transform, endValue: transform.position.y + 2, duration: 1, ease: Ease.InOutSine).OnComplete(() => Tween.PositionY(transform, endValue: -6, duration: 2, ease: Ease.InOutSine)); SoundManager.instance.PlaySound("laser", 0); ;
            // Rotate 'transform' from the current rotation to (0, 90, 0) in 1 second
            Tween.Rotation(transform, endValue: Quaternion.Euler(0, 0, 180), duration: 0.75f).OnComplete(() => GameManager.instance.GameOver());
        }
@@ -92,6 +95,7 @@ public class FlappyBird : MonoBehaviour
     {
         if (isAlive && collision.tag == "Score")
         {
+            SoundManager.instance.PlaySound("pickup", 0);
             GameManager.instance.Scoring();
         }
     }

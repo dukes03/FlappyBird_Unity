@@ -34,6 +34,7 @@ public class UIManager : Singleton<UIManager>
 
     public void OpnePanel(UIManager.UI_State uI_State)
     {
+        SoundManager.instance.PlaySound("pickup", 0);
         HighScorePanel.ShowPanel(false);
         GameOverPanel.ShowPanel(false);
         MenuPanel.SetActive(false);

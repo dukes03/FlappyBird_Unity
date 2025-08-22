@@ -16,7 +16,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] FlappyBird flappyBird;
     void Start()
     {
-
         flappyBird.gameObject.SetActive(false);
         listParalluxStopMove(true);
         LogoIn();
