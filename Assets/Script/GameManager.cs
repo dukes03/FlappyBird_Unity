@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] GameObject prefabPipe;
+    [SerializeField] GameObject Logo;
     [SerializeField] List<PipeObstacle> listPipe;
     [SerializeField] List<LayerParallux> listParallux;
     [SerializeField] int Score = 0;
@@ -18,9 +19,20 @@ public class GameManager : Singleton<GameManager>
 
         flappyBird.gameObject.SetActive(false);
         listParalluxStopMove(true);
+        LogoIn();
+    }
+    public void LogoIn()
+    {
+        Logo.transform.position = new Vector2(-4.68f, -3.59f);
+        Tween.Position(Logo.transform, new Vector2(0.68f, 2.3f), 1);
+    }
+    public void LogoOut()
+    {
+        Tween.Position(Logo.transform, new Vector2(4.19f, 6.17f), 0.5f);
     }
     public void StartGame()
     {
+        LogoOut();
         Score = 0;
         UIManager.instance.InGame();
         flappyBird.gameObject.SetActive(true);

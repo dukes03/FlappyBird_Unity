@@ -25,6 +25,7 @@ public class FlappyBird : MonoBehaviour
     }
     public void FlyInto()
     {
+        Tween.StopAll(transform);
         transform.position = new Vector2(-5, 1.3f);
         tween = Tween.Position(transform, new Vector2(-1.9f, 0), 1f, Ease.InOutQuad).OnComplete(Init);
         Tween.Rotation(transform, endValue: new Vector3(0f, 0f, 0f), duration: 0.5f);
@@ -63,7 +64,7 @@ public class FlappyBird : MonoBehaviour
         isAlive = false;
         Tween.Delay(duration: 0.5f, () =>
        {
-           Tween.PositionY(transform, endValue: transform.position.y+1, duration: 1, ease: Ease.InOutSine).OnComplete(() => Tween.PositionY(transform, endValue: -6, duration: 2, ease: Ease.InOutSine));
+           Tween.PositionY(transform, endValue: transform.position.y + 2, duration: 1, ease: Ease.InOutSine).OnComplete(() => Tween.PositionY(transform, endValue: -6, duration: 2, ease: Ease.InOutSine));
            // Rotate 'transform' from the current rotation to (0, 90, 0) in 1 second
            Tween.Rotation(transform, endValue: Quaternion.Euler(0, 0, 180), duration: 0.75f).OnComplete(() => GameManager.instance.GameOver());
        }

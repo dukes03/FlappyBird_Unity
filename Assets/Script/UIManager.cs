@@ -14,6 +14,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void OpenMenu()
     {
+        GameManager.instance.LogoIn();
         OpnePanel(UIManager.UI_State.Menu);
     }
     public void InGame()
@@ -23,6 +24,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void OpenHighScore()
     {
+        GameManager.instance.LogoOut();
         OpnePanel(UIManager.UI_State.HighScore);
     }
     public void OpenGameOver()
