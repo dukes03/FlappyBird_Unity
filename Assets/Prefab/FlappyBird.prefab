@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 100
   gravity: 10
-  velocityFly: 7.5
+  velocityFly: 5.5
   Hand:
   - {fileID: 7854008711174676186}
   - {fileID: 3170152753315179165}

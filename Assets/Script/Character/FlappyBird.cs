@@ -53,6 +53,7 @@ public class FlappyBird : MonoBehaviour
     public void Dead()
     {
         Stoptween();
+        GameManager.instance.StopAll();
         Physics2D.gravity = Vector2.zero;
         rigidbody2D.linearVelocityY = 0;
         isAlive = false;
@@ -60,7 +61,7 @@ public class FlappyBird : MonoBehaviour
        {
            Tween.PositionY(transform, endValue: 1, duration: 1, ease: Ease.InOutSine).OnComplete(() => Tween.PositionY(transform, endValue: -6, duration: 2, ease: Ease.InOutSine));
            // Rotate 'transform' from the current rotation to (0, 90, 0) in 1 second
-           Tween.Rotation(transform, endValue: Quaternion.Euler(0, 0, 180), duration: 0.75f);
+           Tween.Rotation(transform, endValue: Quaternion.Euler(0, 0, 180), duration: 0.75f).OnComplete(() => GameManager.instance.GameOver());
        }
         );
 
@@ -75,11 +76,18 @@ public class FlappyBird : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-        if (isAlive)
+    
+        if (isAlive && collision.tag == "Obstacles")
         {
             Dead();
         }
 
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (isAlive && collision.tag == "Score")
+        {
+            GameManager.instance.Scoring();
+        }
     }
 }
