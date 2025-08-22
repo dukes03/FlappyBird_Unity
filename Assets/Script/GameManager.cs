@@ -6,14 +6,14 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] GameObject prefabPipe;
     [SerializeField] GameObject Logo;
-    [SerializeField] List<PipeObstacle> listPipe;
-    [SerializeField] List<LayerParallux> listParallux;
+    [SerializeField] List<PipeObstacle> listPipe; // listPipe Spawn in Secne
+    [SerializeField] List<LayerParallux> listParallux; // list Parallux in Secne  Exception Sky
     [SerializeField] int Score = 0;
     [SerializeField] int HighScore = 0;
     [SerializeField] Vector2 pointEnd;// Pos [End,Start]    
     [SerializeField] Vector2 pointStart;// Pos [End,Start]
     [SerializeField] float betweenPipe;// Distance between pipes
-    [SerializeField] FlappyBird flappyBird;
+    [SerializeField] FlappyBird flappyBird; // Character 
     void Start()
     {
         flappyBird.gameObject.SetActive(false);
